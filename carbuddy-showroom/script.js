@@ -15,7 +15,7 @@ function addToCart(car) {
     }
   
     updateCartCount(); // Update jumlah item di ikon keranjang
-    alert(`${car.merk} ${car.type} added to cart!`);
+    // alert(`${car.merk} ${car.type} added to cart!`);
 }
 
 function updateQuantity(type, change) {
@@ -70,6 +70,17 @@ function dataContent() {
   }
 
   carsContent.innerHTML = html;
+  const Toast = Swal.mixin({
+    toast: true,
+    position: "top-end",
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+      toast.onmouseenter = Swal.stopTimer;
+      toast.onmouseleave = Swal.resumeTimer;
+    }
+  });
 
   // Menambahkan tombol Eventlistener "Add to Cart"
   document.querySelectorAll(".add-to-cart").forEach((button) => {
@@ -77,6 +88,10 @@ function dataContent() {
       event.preventDefault();
       const index = event.target.getAttribute("data-index");
       addToCart(carsArray[index]); // Tambahkan mobil ke keranjang
+      Toast.fire({
+        icon: "success",
+        title: "Berhasil menambahkan mobil ke keranjang"
+      });
     });
   });
 }
@@ -188,7 +203,12 @@ function showCheckoutModal() {
 // ================= Function Confirm Payment ====================
 // Function to confirm payment
 function confirmPayment() {
-    alert("Payment confirmed! Thank you for your purchase.");
+    // alert("Payment confirmed! Thank you for your purchase.");
+    Swal.fire({
+      title: "Payement Successed!",
+      text: "Check your garage!",
+      icon: "success"
+    });
     cart = []; // Kosongkan keranjang
     updateCartCount(); // Update jumlah item di ikon keranjang
     displayCart(); // Refresh tampilan keranjang

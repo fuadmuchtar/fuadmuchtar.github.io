@@ -13,10 +13,21 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
     />
   </head>
+  <style>
+    /* body {
+      background-image: url(assets/backlogo.png);
+      background-repeat: repeat;
+      background-size: small;
+    }
+    .content {
+    } */
+    /* height: 100vh; */
+  </style>
   <body>
-    <div class="container">
+    <div class="">
+      <div class="container">
       <header
-        class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom"
+        class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4"
       >
         <div class="col-md-3 mb-2 mb-md-0">
           <a
@@ -28,7 +39,9 @@
         </div>
 
         <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-          <li><a href="index.html" class="nav-link px-2 link-secondary">Home</a></li>
+          <li>
+            <a href="index.html" class="nav-link px-2 link-secondary">Home</a>
+          </li>
           <li><a href="buy.html" class="nav-link px-2">Buy</a></li>
         </ul>
 
@@ -37,17 +50,66 @@
           <button type="button" class="btn btn-primary">Login</button>
         </div>
       </header>
+    </div>
 
-      <div>
-        <h1>halaman home</h1>
+      <div class="content">
+        <div class="container col-xxl-8 px-4 py-5">
+          <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+            <div class="col-10 col-sm-8 col-lg-6">
+              <img
+                src="assets/home1.png"
+                class="d-block mx-lg-auto img-fluid"
+                alt="Bootstrap Themes"
+                width="700"
+                height="500"
+                loading="lazy"
+              />
+            </div>
+            <div class="col-lg-6">
+              <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">
+                Cari Mobil? Cars Buddy aja!
+              </h1>
+              <p class="lead">
+                Beli Mobil Impian atau Jual Mobil Lama dengan Proses Cepat & Aman
+              </p>
+              <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                <a href="buy.html" class="btn btn-primary btn-lg px-4">Cari Mobil Sekarang</a>
+                <!-- <button
+                  type="button"
+                  class="btn btn-primary btn-lg px-4 me-md-2"
+                >
+                Mulai Cari Mobil Sekarang
+                </button> -->
+                <!-- <button
+                  type="button"
+                  class="btn btn-outline-secondary btn-lg px-4"
+                >
+                  Default
+                </button> -->
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <footer class="py-3 my-4">
+
+      <!-- <footer class="footer mt-auto py-3 bg-body-tertiary">
+        <div class="container">
+          <span class="text-body-secondary">Place sticky footer content here.</span>
+        </div>
+      </footer> -->
+
+
+      <footer class="footer mt-auto py-3 bg-body-tertiary">
         <ul class="nav justify-content-center border-bottom pb-3 mb-3">
           <li class="nav-item">
-            <a href="about.html" class="nav-link px-2 text-body-secondary">About</a>
+            <a href="contact.html" class="nav-link px-2 text-body-secondary"
+              >Contact</a
+            >
           </li>
           <li class="nav-item">
-            <a href="contact.html" class="nav-link px-2 text-body-secondary">Contact</a>
+            <a href="about.html" class="nav-link px-2 text-body-secondary"
+              >About</a
+            >
           </li>
         </ul>
         <p class="text-center text-body-secondary">© BapaBudi Company, Inc</p>
