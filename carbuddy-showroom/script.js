@@ -35,12 +35,42 @@ function updateQuantity(type, change) {
   }
 
 function updateCartCount() {
-  cartCount.textContent = cart.length;
+    const cartCount = document.getElementById("cartCount");
+    cartCount.textContent = cart.length; // Update jumlah item di ikon keranjang
 }
 
 function displayCart() {
-  console.log("Cart Items:", cart);
-}
+    const cartItems = document.getElementById("cartItems");
+    let html = "";
+    if (cart.length === 0) {
+      html = "<tr><td colspan='8' class='text-center'>Your cart is empty.</td></tr>";
+    } else {
+      cart.forEach((item, index) => {
+        const totalPrice = item.price * item.quantity;
+        html += `
+          <tr>
+            <th scope="row">${index + 1}</th>
+            <td>${item.merk}</td>
+            <td>${item.type}</td>
+            <td>${item.year}</td>
+            <td>${formatRupiah(item.price)}</td>
+            <td>
+              <button class="btn btn-sm btn-outline-secondary" onclick="updateQuantity('${item.type}', -1)">-</button>
+              <span class="mx-2">${item.quantity}</span>
+              <button class="btn btn-sm btn-outline-secondary" onclick="updateQuantity('${item.type}', 1)">+</button>
+            </td>
+            <td>${formatRupiah(totalPrice)}</td>
+            <td>
+              <button class="btn btn-danger btn-sm" onclick="removeFromCart('${item.type}')">
+                <i class="bi bi-trash"></i> Remove
+              </button>
+            </td>
+          </tr>
+        `;
+      });
+    }
+    cartItems.innerHTML = html;
+  }
 // ===========================================================
 
 // =================== Generate Object Cars ====================
@@ -186,18 +216,38 @@ function showCheckoutModal() {
 // ===============================================================
 
 // ================= Function Confirm Payment ====================
-// Function to confirm payment
 function confirmPayment() {
+    // Kosongkan keranjang
+    cart = [];
+  
+    // Update jumlah item di ikon keranjang
+    updateCartCount();
+  
+    // Refresh tampilan keranjang di modal cart
+    displayCart();
+  
+    // Tutup modal checkout
+    const checkoutModal = bootstrap.Modal.getInstance(document.getElementById("checkoutModal"));
+    if (checkoutModal) {
+      checkoutModal.hide();
+    }
+  
+    // Tutup modal cart
+    const cartModal = bootstrap.Modal.getInstance(document.getElementById("cartModal"));
+    if (cartModal) {
+      cartModal.hide();
+    }
+  
+    // Tampilkan pesan sukses
     alert("Payment confirmed! Thank you for your purchase.");
-    cart = []; // Kosongkan keranjang
-    updateCartCount(); // Update jumlah item di ikon keranjang
-    displayCart(); // Refresh tampilan keranjang
-    new bootstrap.Modal(document.getElementById("checkoutModal")).hide(); // Tutup modal
 }
 // ===============================================================
 
 // Menambahkan Eventlistener ke tombol checkout dalam cart
 document.querySelector("#cartModal .btn-primary").addEventListener("click", () => {
-    new bootstrap.Modal(document.getElementById("cartModal")).hide(); // Tutup modal cart
-    showCheckoutModal(); // Tampilkan modal checkout
+  const cartModal = bootstrap.Modal.getInstance(document.getElementById("cartModal"));
+  if (cartModal) {
+    cartModal.hide(); // Tutup modal cart
+  }
+  showCheckoutModal(); // Tampilkan modal checkout
 });
