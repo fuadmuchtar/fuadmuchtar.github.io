@@ -64,4 +64,22 @@ const carsArray = [
         transmission: 'Matic',
         price: 724_000_000
     },
+    {
+        id: 'me20182',
+        merk: 'Mitsubishi',
+        type: 'Expander',
+        img: 'assets/xpander.jpg',
+        year: 2018,
+        transmission: 'Matic',
+        price: 430_000_000
+    },
+    {
+        id: 'tf20242',
+        merk: 'Toyota',
+        type: 'Alphard',
+        img: 'assets/alphard.jpg',
+        year: 2016,
+        transmission: 'Matic',
+        price: 552_000_000
+    },
 ]
