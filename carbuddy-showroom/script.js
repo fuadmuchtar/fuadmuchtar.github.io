@@ -1,38 +1,40 @@
+console.log("script loaded");
+
 // =================== Cart Logic ====================
 let cart = [];
 const cartCount = document.getElementById("cartCount"); // Cart count badge
 
 function addToCart(car) {
-    // Cek apakah mobil dengan type yang sama sudah ada di keranjang
-    const existingItem = cart.find((item) => item.type === car.type);
-  
-    if (existingItem) {
-      // Jika sudah ada, tambahkan quantity-nya
-      existingItem.quantity += 1;
-    } else {
-      // Jika belum ada, tambahkan item baru dengan quantity 1
-      cart.push({ ...car, quantity: 1 });
-    }
-  
-    updateCartCount(); // Update jumlah item di ikon keranjang
-    // alert(`${car.merk} ${car.type} added to cart!`);
+  // Cek apakah mobil dengan type yang sama sudah ada di keranjang
+  const existingItem = cart.find((item) => item.type === car.type);
+
+  if (existingItem) {
+    // Jika sudah ada, tambahkan quantity-nya
+    existingItem.quantity += 1;
+  } else {
+    // Jika belum ada, tambahkan item baru dengan quantity 1
+    cart.push({ ...car, quantity: 1 });
+  }
+
+  updateCartCount(); // Update jumlah item di ikon keranjang
+  // alert(`${car.merk} ${car.type} added to cart!`);
 }
 
 function updateQuantity(type, change) {
-    const itemIndex = cart.findIndex((item) => item.type === type);
-    if (itemIndex === -1) return; // Jika item tidak ditemukan, keluar
-  
-    const item = cart[itemIndex];
-    item.quantity += change;
-  
-    // Jika quantity <= 0, hapus item dari keranjang
-    if (item.quantity <= 0) {
-      cart.splice(itemIndex, 1);
-    }
-  
-    updateCartCount(); // Update jumlah item di ikon keranjang
-    displayCart(); // Refresh tampilan tabel
+  const itemIndex = cart.findIndex((item) => item.type === type);
+  if (itemIndex === -1) return; // Jika item tidak ditemukan, keluar
+
+  const item = cart[itemIndex];
+  item.quantity += change;
+
+  // Jika quantity <= 0, hapus item dari keranjang
+  if (item.quantity <= 0) {
+    cart.splice(itemIndex, 1);
   }
+
+  updateCartCount(); // Update jumlah item di ikon keranjang
+  displayCart(); // Refresh tampilan tabel
+}
 
 function updateCartCount() {
   cartCount.textContent = cart.length;
@@ -51,7 +53,7 @@ function dataContent() {
 
   // let car = cars.length;
   for (let i = 0; i < carsArray.length; i++) {
-    let harga = formatRupiah(carsArray[i].price)
+    let harga = formatRupiah(carsArray[i].price);
     html += `
     
     <div class="col">
@@ -79,7 +81,7 @@ function dataContent() {
     didOpen: (toast) => {
       toast.onmouseenter = Swal.stopTimer;
       toast.onmouseleave = Swal.resumeTimer;
-    }
+    },
   });
 
   // Menambahkan tombol Eventlistener "Add to Cart"
@@ -90,7 +92,7 @@ function dataContent() {
       addToCart(carsArray[index]); // Tambahkan mobil ke keranjang
       Toast.fire({
         icon: "success",
-        title: "Berhasil menambahkan mobil ke keranjang"
+        title: "Berhasil menambahkan mobil ke keranjang",
       });
     });
   });
@@ -103,24 +105,25 @@ dataContent();
 
 // Function Number to Currency Format
 function formatRupiah(angka) {
-    return new Intl.NumberFormat('id-ID', {
-        style: 'currency',
-        currency: 'IDR',
-        minimumFractionDigits: 0
-    }).format(angka);
+  return new Intl.NumberFormat("id-ID", {
+    style: "currency",
+    currency: "IDR",
+    minimumFractionDigits: 0,
+  }).format(angka);
 }
 // ===============================================================
 
 // ================== Function Display Cart ======================
 function displayCart() {
-    const cartItems = document.getElementById("cartItems");
-    let html = "";
-    if (cart.length === 0) {
-      html = "<tr><td colspan='8' class='text-center'>Your cart is empty.</td></tr>";
-    } else {
-      cart.forEach((item, index) => {
-        const totalPrice = item.price * item.quantity;
-        html += `
+  const cartItems = document.getElementById("cartItems");
+  let html = "";
+  if (cart.length === 0) {
+    html =
+      "<tr><td colspan='8' class='text-center'>Your cart is empty.</td></tr>";
+  } else {
+    cart.forEach((item, index) => {
+      const totalPrice = item.price * item.quantity;
+      html += `
           <tr>
             <th scope="row">${index + 1}</th>
             <td>${item.merk}</td>
@@ -128,56 +131,62 @@ function displayCart() {
             <td>${item.year}</td>
             <td>${formatRupiah(item.price)}</td>
             <td>
-              <button class="btn btn-sm btn-outline-secondary" onclick="updateQuantity('${item.type}', -1)">-</button>
+              <button class="btn btn-sm btn-outline-secondary" onclick="updateQuantity('${
+                item.type
+              }', -1)">-</button>
               <span class="mx-2">${item.quantity}</span>
-              <button class="btn btn-sm btn-outline-secondary" onclick="updateQuantity('${item.type}', 1)">+</button>
+              <button class="btn btn-sm btn-outline-secondary" onclick="updateQuantity('${
+                item.type
+              }', 1)">+</button>
             </td>
             <td>${formatRupiah(totalPrice)}</td>
             <td>
-              <button class="btn btn-danger btn-sm" onclick="removeFromCart('${item.type}')">
+              <button class="btn btn-danger btn-sm" onclick="removeFromCart('${
+                item.type
+              }')">
                 <i class="bi bi-trash"></i> Remove
               </button>
             </td>
           </tr>
         `;
-      });
-    }
-    cartItems.innerHTML = html;
+    });
+  }
+  cartItems.innerHTML = html;
 }
-  
-function removeFromCart(type) {
-    const itemIndex = cart.findIndex((item) => item.type === type);
-    if (itemIndex === -1) return; // Jika item tidak ditemukan, keluar
 
-    cart.splice(itemIndex, 1); // Hapus item dari keranjang
-    updateCartCount(); // Update jumlah item di ikon keranjang
-    displayCart(); // Refresh tampilan tabel
-    alert("Item removed from cart!");
+function removeFromCart(type) {
+  const itemIndex = cart.findIndex((item) => item.type === type);
+  if (itemIndex === -1) return; // Jika item tidak ditemukan, keluar
+
+  cart.splice(itemIndex, 1); // Hapus item dari keranjang
+  updateCartCount(); // Update jumlah item di ikon keranjang
+  displayCart(); // Refresh tampilan tabel
+  alert("Item removed from cart!");
 }
 
 // Menambahkan Eventlistener saat klik ikon cart
 document.getElementById("cartIcon").addEventListener("click", (event) => {
-    event.preventDefault();
-    displayCart();
-    new bootstrap.Modal(document.getElementById("cartModal")).show();
+  event.preventDefault();
+  displayCart();
+  new bootstrap.Modal(document.getElementById("cartModal")).show();
 });
 // ===============================================================
 
 // =================== Display Checkout ==========================
 function showCheckoutModal() {
-    if (cart.length === 0) {
-      alert("Your cart is empty!");
-      return;
-    }
-  
-    // Hitung total harga
-    const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
-  
-    // Tampilkan item di tabel checkout
-    const checkoutItems = document.getElementById("checkoutItems");
-    let html = "";
-    cart.forEach((item) => {
-      html += `
+  if (cart.length === 0) {
+    alert("Your cart is empty!");
+    return;
+  }
+
+  // Hitung total harga
+  const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+
+  // Tampilkan item di tabel checkout
+  const checkoutItems = document.getElementById("checkoutItems");
+  let html = "";
+  cart.forEach((item) => {
+    html += `
         <tr>
           <td>${item.merk}</td>
           <td>${item.type}</td>
@@ -185,39 +194,60 @@ function showCheckoutModal() {
           <td>${formatRupiah(item.price)}</td>
         </tr>
       `;
-    });
-    checkoutItems.innerHTML = html;
-  
-    // Tampilkan total harga
-    document.getElementById("checkoutTotal").textContent = formatRupiah(total);
-  
-    // Tampilkan QRIS Dummy
-    document.getElementById("qrisImage").src = "assets/sample-qr-code.webp";
-    document.getElementById("paymentCode").textContent = "DUMMY1234567890";
-  
-    // Tampilkan modal
-    new bootstrap.Modal(document.getElementById("checkoutModal")).show();
+  });
+  checkoutItems.innerHTML = html;
+
+  // Tampilkan total harga
+  document.getElementById("checkoutTotal").textContent = formatRupiah(total);
+
+  // Tampilkan QRIS Dummy
+  document.getElementById("qrisImage").src = "assets/sample-qr-code.webp";
+  document.getElementById("paymentCode").textContent = "DUMMY1234567890";
+
+  // Tampilkan modal
+  new bootstrap.Modal(document.getElementById("checkoutModal")).show();
 }
 // ===============================================================
 
 // ================= Function Confirm Payment ====================
 // Function to confirm payment
 function confirmPayment() {
-    // alert("Payment confirmed! Thank you for your purchase.");
-    Swal.fire({
-      title: "Payement Successed!",
-      text: "Check your garage!",
-      icon: "success"
-    });
-    cart = []; // Kosongkan keranjang
-    updateCartCount(); // Update jumlah item di ikon keranjang
-    displayCart(); // Refresh tampilan keranjang
-    new bootstrap.Modal(document.getElementById("checkoutModal")).hide(); // Tutup modal
+  // alert("Payment confirmed! Thank you for your purchase.");
+  Swal.fire({
+    title: "Payement Successed!",
+    text: "Check your garage!",
+    icon: "success",
+  });
+  cart = []; // Kosongkan keranjang
+  updateCartCount(); // Update jumlah item di ikon keranjang
+  displayCart(); // Refresh tampilan keranjang
+  new bootstrap.Modal(document.getElementById("checkoutModal")).hide(); // Tutup modal
 }
 // ===============================================================
 
 // Menambahkan Eventlistener ke tombol checkout dalam cart
-document.querySelector("#cartModal .btn-primary").addEventListener("click", () => {
+document
+  .querySelector("#cartModal .btn-primary")
+  .addEventListener("click", () => {
     new bootstrap.Modal(document.getElementById("cartModal")).hide(); // Tutup modal cart
     showCheckoutModal(); // Tampilkan modal checkout
-});
+  });
+
+function sendMessage() {
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+  const msg = document.getElementById("message").value;
+  
+  if (!name || !email || !msg) {
+    return;
+  }
+  event.preventDefault();
+
+  Swal.fire({
+    title: "Sukses!",
+    text: "Pesan berhasil terkirim!",
+    icon: "success",
+  });
+
+  document.getElementById("form").reset();
+}
