@@ -1,71 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Temukan Mobil Impian Anda Disini! | Cars Buddy</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap" rel="stylesheet">
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
-    />
-  </head>
-  
-  <body>
-    <div class="container-fluid">
-      <header
-        class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom"
-      >
-        <div class="col-md-3 px-3 mb-2 mb-md-0">
-          <a
-            href="index.html"
-            class="d-inline-flex link-body-emphasis text-decoration-none"
-          >
-            <span class="fs-4" style="font-family: 'Newsreader', serif; font-weight: bold;">Cars Buddy</span>
-          </a>
-        </div>
 
-        <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-          <li>
-            <a href="index.html" class="nav-link px-2 link-secondary">Home</a>
-          </li>
-          <li><a href="buy.html" class="nav-link px-2 link-secondary">Buy</a></li>
-          <!-- <li><a href="buy.html" class="nav-link px-2">Contact</a></li>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Temukan Mobil Impian Anda Disini! | Cars Buddy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+</head>
+
+<body>
+  <div class="container-fluid">
+    <header
+      class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+      <div class="col-md-3 px-3 mb-2 mb-md-0">
+        <a href="index.html" class="d-inline-flex link-body-emphasis text-decoration-none">
+          <span class="fs-4" style="font-family: 'Newsreader', serif; font-weight: bold;">Cars Buddy</span>
+        </a>
+      </div>
+
+      <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+        <li>
+          <a href="index.html" class="nav-link px-2 link-secondary">Home</a>
+        </li>
+        <li><a href="buy.html" class="nav-link px-2 link-secondary">Buy</a></li>
+        <!-- <li><a href="buy.html" class="nav-link px-2">Contact</a></li>
           <li><a href="buy.html" class="nav-link px-2">About</a></li> -->
-        </ul>
+      </ul>
 
-        <div class="col-md-3 text-end">
-          <!-- cart icon -->
-          <a href="#" class="btn me-2" id="cartIcon">
-            <i class="bi bi-cart" style="font-size: 18px"></i>
-            <span class="badge bg-danger" id="cartCount">0</span>
-          </a>
-          <!-- <button type="button" class="btn btn-outline-primary me-2">Login</button> -->
-          <button type="button" class="btn">Sign Up/Login</button>
+      <div class="col-md-3 text-end">
+        <!-- cart icon -->
+        <a href="#" class="btn me-2" id="cartIcon">
+          <i class="bi bi-cart" style="font-size: 18px"></i>
+          <span class="badge bg-danger" id="cartCount">0</span>
+        </a>
+        <!-- <button type="button" class="btn btn-outline-primary me-2">Login</button> -->
+        <button type="button" id="loginLogoutButton" class="btn">Sign Up/Login</button>
 
-        </div>
-      </header>
-    </div>
+      </div>
+    </header>
+  </div>
 
-    <!-- <div class="container"> -->
-      <div class="content">
-        <div class="container col-xxl-8 px-4 py-5">
-          <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
-            <div class="col-10 col-sm-8 col-lg-6">
-              <video
-                src="assets/bg-video.mp4"
-                autoplay
-                muted
-                loop
-                style="width: 550px"
-              ></video>
-              <!-- <img
+  <!-- <div class="container"> -->
+  <div class="content">
+    <div class="container col-xxl-8 px-4 py-5">
+      <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+        <div class="col-10 col-sm-8 col-lg-6">
+          <video src="assets/bg-video.mp4" autoplay muted loop style="width: 550px"></video>
+          <!-- <img
                 src="assets/home1.png"
                 class="d-block mx-lg-auto img-fluid"
                 alt="Bootstrap Themes"
@@ -73,67 +60,143 @@
                 height="500"
                 loading="lazy"
               /> -->
-            </div>
-            <div class="col-lg-6">
-              <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">
-                Cari Mobil? Cars Buddy aja!
-              </h1>
-              <p class="lead">
-                Beli Mobil Impian atau Jual Mobil Lama dengan Proses Cepat &
-                Aman
-              </p>
-              <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-                <a href="buy.html" class="btn btn-warning btn-lg px-4"
-                  >Cari Mobil Sekarang</a
-                >
-                <!-- <button
+        </div>
+        <div class="col-lg-6">
+          <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">
+            Cari Mobil? Cars Buddy aja!
+          </h1>
+          <p class="lead">
+            Beli Mobil Impian dengan Proses Cepat &
+            Aman
+          </p>
+          <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+            <a href="buy.html" class="btn btn-warning btn-lg px-4">Cari Mobil Sekarang</a>
+            <!-- <button
                   type="button"
                   class="btn btn-primary btn-lg px-4 me-md-2"
                 >
                 Mulai Cari Mobil Sekarang
                 </button> -->
-                <!-- <button
+            <!-- <button
                   type="button"
                   class="btn btn-outline-secondary btn-lg px-4"
                 >
                   Default
                 </button> -->
-              </div>
-            </div>
           </div>
         </div>
       </div>
-    <!-- </div> -->
+    </div>
+  </div>
+  <!-- </div> -->
 
-    <!-- <footer class="footer mt-auto py-3 bg-body-tertiary">
+  <!-- <footer class="footer mt-auto py-3 bg-body-tertiary">
         <div class="container">
           <span class="text-body-secondary">Place sticky footer content here.</span>
         </div>
       </footer> -->
 
-      <div class="container-fluid">
-        <footer class="my-4">
-          <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-            <li class="nav-item">
-              <a href="contact.html" class="nav-link px-2 text-body-secondary"
-                >Contact</a
-              >
-            </li>
-            <li class="nav-item">
-              <a href="about.html" class="nav-link px-2 text-body-secondary"
-                >About</a
-              >
-            </li>
-          </ul>
-          <p class="text-center text-body-secondary">©2025 Cars Buddy Company, Inc</p>
-        </footer>
+  <div class="container-fluid">
+    <footer class="my-4">
+      <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+        <li class="nav-item">
+          <a href="contact.html" class="nav-link px-2 text-body-secondary">Contact</a>
+        </li>
+        <li class="nav-item">
+          <a href="about.html" class="nav-link px-2 text-body-secondary">About</a>
+        </li>
+      </ul>
+      <p class="text-center text-body-secondary">©2025 Cars Buddy Company, Inc</p>
+    </footer>
+  </div>
+
+<!-- Cart Modal -->
+<div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="cartModalLabel">Your Cart</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
+      <div class="modal-body">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">No</th>
+              <th scope="col">Merk</th>
+              <th scope="col">Type</th>
+              <th scope="col">Year</th>
+              <th scope="col">Price</th>
+              <th scope="col">Quantity</th>
+              <th scope="col">Total</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody id="cartItems">
+            <!-- Item dalam cart akan dimasukkan secara dinamis disini -->
+          </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Checkout</button>
+      </div>
+    </div>
+  </div>
+</div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Login Modal -->
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="loginModalLabel">Login</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="loginForm">
+          <div class="mb-3">
+            <label for="loginEmail" class="form-label">Email</label>
+            <input type="email" class="form-control" id="loginEmail" required>
+          </div>
+          <div class="mb-3">
+            <label for="loginPassword" class="form-label">Password</label>
+            <input type="password" class="form-control" id="loginPassword" required>
+          </div>
+          <button type="submit" class="btn btn-primary">Login</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 
-    <script src="cars.js"></script>
-    <script src="script.js"></script>
-    
-    </script>
-  </body>
+<!-- Checkout Modal -->
+<div class="modal fade" id="checkoutModal" tabindex="-1" aria-labelledby="checkoutModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="checkoutModalLabel">Checkout</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div id="checkoutContent">
+          <!-- Konten checkout akan ditampilkan di sini -->
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="paymentButton">Payment</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="cars.js"></script>
+  <script src="script.js"></script>
+
+  </script>
+</body>
+
 </html>
