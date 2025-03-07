@@ -237,6 +237,7 @@ document.getElementById("cartIcon").addEventListener("click", (event) => {
 // Function to show checkout modal
 function showCheckoutModal() {
     const checkoutContent = document.getElementById("checkoutContent");
+    const checkoutFooter = document.getElementById("checkoutFooter");
   
     if (!isLoggedIn) {
         // Tampilkan pesan untuk login terlebih dahulu
@@ -246,6 +247,9 @@ function showCheckoutModal() {
           <button class="btn btn-primary" onclick="showLoginModal()">Login</button>
         </div>
         `;
+
+        //sembunyikan tombol close dan payment
+        checkoutFooter.innerHTML = "";
     } else {
       // Tampilkan QRIS dan informasi pembayaran
       const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
@@ -290,9 +294,12 @@ function showCheckoutModal() {
         `;
       });
       checkoutItems.innerHTML = html;
-  
-      // Tampilkan tombol Payment
-      document.getElementById("paymentButton").style.display = "block";
+
+      //Tampilkan tombol close dan payment
+      checkoutFooter.innerHTML = `
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="paymentButton">Payment</button>
+      `;
     }
   
     // Tampilkan modal
@@ -495,7 +502,7 @@ function showCheckoutModal() {
   new bootstrap.Modal(document.getElementById("checkoutModal")).show();
 }
 
-// Function to show login modal
+// Function menampilkan login modal
 function showLoginModal() {
   // Tutup modal checkout
   const checkoutModal = bootstrap.Modal.getInstance(document.getElementById("checkoutModal"));
